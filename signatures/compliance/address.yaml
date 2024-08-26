@@ -1,0 +1,46 @@
+---
+filename: singapore_address_detection.yaml
+signatures:
+
+  - name: Singapore Address
+    status: enabled
+    author: YourName
+    date: "2024-07-15"
+    description: Detects addresses in Singapore
+    severity: "80"
+    notes:
+    references:
+    watchman_apps:
+      slack_std:
+        category: pii
+        scope:
+          - messages
+        file_types:
+        search_strings:
+          - address
+          - singapore address
+          - sg address
+      slack_eg:
+        scope:
+          - messages
+          - drafts
+        file_types:
+        locations:
+          - public
+          - private
+          - connect
+        search_strings:
+          - address
+          - singapore address
+          - sg address
+    test_cases:
+      match_cases:
+        - "123 Orchard Road, #12-34, Singapore 238567"
+        - "56 Geylang Lorong 25A, Singapore 388253"
+        - "1001 Bukit Merah Central, #02-01, Singapore 159836"
+      fail_cases:
+        - "Orchard Road"
+        - "56 Geylang"
+        - "Singapore"
+    patterns:
+      - '\d{1,4}\s+[A-Za-z\s]+,\s*#?\d{1,4}-\d{1,4},\s*Singapore\s*\d{6}'
