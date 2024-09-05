@@ -1,0 +1,45 @@
+---
+filename: emails.yaml
+signatures:
+
+  - name: Email Address
+    status: enabled
+    author: Vikas Rawat
+    date: "2024-07-15"
+    description: Detects exposed email addresses in standard formats
+    severity: "80"
+    notes:
+    references:
+    watchman_apps:
+      slack_std:
+        category: pii
+        scope:
+          - messages
+        file_types:
+        search_strings:
+          - email
+          - email address
+          - e-mail
+      slack_eg:
+        scope:
+          - messages
+          - drafts
+        file_types:
+        locations:
+          - public
+          - private
+          - connect
+        search_strings:
+          - email
+          - email address
+          - e-mail
+    test_cases:
+      match_cases:
+        - "example@example.com"
+        - "user.name+tag+sorting@example.com"
+        - "x@example.com"
+      fail_cases:
+        - "plainaddress"
+        - "@missingusername.com"
+    patterns:
+      - '[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}'%
