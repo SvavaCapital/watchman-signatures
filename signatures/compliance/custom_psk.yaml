@@ -2,7 +2,7 @@
 filename: custom_psk.yaml
 signatures:
 
-  - name: Bank Cards
+  - name: Custom password
     status: enabled
     author: PaperMtn
     date: "2021-09-24"
