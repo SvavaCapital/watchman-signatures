@@ -1,12 +1,12 @@
 ---
-filename: bank_cards.yaml
+filename: custom_psk.yaml
 signatures:
 
   - name: Bank Cards
     status: enabled
     author: PaperMtn
     date: "2021-09-24"
-    description: Detects exposed bank cards and bank details
+    description: Detects custom psk
     severity: "70"
     notes:
     references:
@@ -32,7 +32,3 @@ signatures:
     test_cases:
       match_cases:
         - "X-Custom-PSK"
-      fail_cases:
-        - "7700 0000 0000 0004"
-    patterns:
-      - 'X-Custom-PSK'
